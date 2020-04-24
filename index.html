@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sound Interference</title>
+</head>
+<body>
+    <script src="app.js"></script>
+    <canvas id="ctx"></canvas>
+    <div class="panel">
+        <h1>Settings</h1>
+        <div>
+            <span>Distance</span>
+            <input type="range" id="distance" class="slider" min="0.01" max="1" value="0.3" step="0.01">
+        </div>
+        <div>
+            <span>Wave Speed</span>
+            <input type="range" id="speed" class="slider" min="5" max="100" value="60" step="1">
+        </div>
+        <div>
+            <input type="checkbox" id="match_ampl" name="match_ampl" class="checkbox">
+            <label for="match_ampl">lock amplitudes together</label>
+        </div>
+        <div>
+            <input type="checkbox" id="match_len" name="match_len" class="checkbox">
+            <label for="match_len">lock wavelengths together</label>
+        </div>
+        <div>
+            <input type="checkbox" id="match_shift" name="match_shift" class="checkbox">
+            <label for="match_shift">lock phase shifts together</label>
+        </div>
+
+        <h2>Top Speaker</h2>
+        <div>
+            <span>Amplitude</span>
+            <input type="range" id="ampl1" class="slider" min="1" max="50" value="10" step="1">
+        </div>
+        <div>
+            <span>Wavelength</span>
+            <input type="range" id="wavelen1" class="slider" min="50" max="300" value="150" step="2">
+        </div>
+        <div>
+            <span>Phase Shift</span>
+            <input type="range" id="shift1" class="slider" min="0" max="6.28" value="0" step="0.2">
+        </div>
+        
+        
+        <h2>Bottom Speaker</h2>
+        <div>
+            <span>Amplitude</span>
+            <input type="range" id="ampl2" class="slider" min="1" max="50" value="10" step="1">
+        </div>
+        <div>
+            <span>Wavelength</span>
+            <input type="range" id="wavelen2" class="slider" min="50" max="300" value="150" step="2">
+        </div>
+        <div>
+            <span>Phase Shift</span>
+            <input type="range" id="shift2" class="slider" min="0" max="6.28" value="0" step="0.2">
+        </div>
+
+        <h2>Extra<br/><small style="font-weight: normal;">affects performance</small></h2>
+        <div>
+            <span>Square Count</span>
+            <input type="range" id="squares" class="slider" min="20" max="250" value="140" step="5">
+        </div>
+        <div>
+            <span>Blur</span>
+            <input type="range" id="blur" class="slider" min="0" max="6" value="5" step="0.2">
+        </div>
+    </div>
+</body>
+</html>

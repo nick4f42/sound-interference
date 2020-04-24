@@ -1,0 +1,59 @@
+:root {
+    font-family: Verdana, sans-serif;
+    color: white;
+}
+
+#ctx {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(73, 23, 67, 0.925);
+    font-size: 0.9rem;
+}
+
+.panel div {
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.3rem;
+}
+
+h2 {
+    font-size: 1rem;
+    margin: 30px 0 15px 0;
+}
+
+small {
+    font-size: 0.8rem;
+}
+
+.panel span {
+    float: left;
+    display: block;
+}
+
+.panel span, .checkbox {
+    margin-left: 10px;
+}
+
+.slider {
+    float: right;
+    margin-right: 10px;
+    display: block;
+}
