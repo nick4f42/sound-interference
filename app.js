@@ -30,25 +30,27 @@ function distance(pos1, pos2) {
                      + Math.pow(pos1.y - pos2.y, 2));
 }
 
-class Sound {
+function Sound() {
+    this.x;
+    this.y;
 
-    x;
-    y;
-    ampl;
-    _wavelen;
-    get wavelen() { return this._wavelen }
-    set wavelen(value) {
+    this.ampl;
+    this.freq;
+
+    this._wavelen;
+    this.getWavelen = () => this._wavelen;
+    this.setWavelen = (value) => {
         this._wavelen = value;
         this.freq = speed / this._wavelen;
     }
-    freq;
-    shift;
+    
+    this.shift;
 
-    pressure(pos) {
+    this.pressure = (pos) => {
         let dist = distance(this, pos);
 
         return this.ampl * Math.sin(this.shift
-            + 2 * Math.PI * (dist / this.wavelen - time * this.freq));
+            + 2 * Math.PI * (dist / this.getWavelen() - time * this.freq));
     }
 }
 
@@ -67,10 +69,10 @@ function setupTopSliders() {
     ampl1Slider.addEventListener("input", ampl1Change);
 
     let wavelen1Change = () => {
-        sound1.wavelen = Number.parseFloat(wavelen1Slider.value);
+        sound1.setWavelen(Number.parseFloat(wavelen1Slider.value));
         if (lenMatch.checked) {
-            sound2.wavelen = sound1.wavelen;
-            wavelen2Slider.value = sound1.wavelen;
+            sound2.setWavelen(sound1.getWavelen());
+            wavelen2Slider.value = sound1.getWavelen();
         }
     }
     wavelen1Change();
@@ -99,10 +101,10 @@ function setupBottomSliders() {
     ampl2Slider.addEventListener("input", ampl2Change);
 
     let wavelen2Change = () => {
-        sound2.wavelen = Number.parseFloat(wavelen2Slider.value);
+        sound2.setWavelen(Number.parseFloat(wavelen2Slider.value));
         if (lenMatch.checked) {
-            sound1.wavelen = sound2.wavelen;
-            wavelen1Slider.value = sound2.wavelen;
+            sound1.setWavelen(sound2.getWavelen());
+            wavelen1Slider.value = sound2.getWavelen();
         }
     }
     wavelen2Change();
@@ -133,8 +135,8 @@ function setupSettingsSliders() {
     let speedChange = () => {
         speed = Number.parseFloat(speedSlider.value)
 
-        sound1.freq = speed / sound1.wavelen;
-        sound2.freq = speed / sound2.wavelen;
+        sound1.freq = speed / sound1.getWavelen();
+        sound2.freq = speed / sound2.getWavelen();
     }
     speedChange();
     speedSlider.addEventListener("change", speedChange);
@@ -171,7 +173,7 @@ function setupCheckBoxes() {
 
     let lenLockChange = () => {
         if (lenMatch.checked) {
-            sound2.wavelen = sound1.wavelen;
+            sound2.setWavelen(sound1.getWavelen());
             wavelen2Slider.value = wavelen1Slider.value;
         }
     }
