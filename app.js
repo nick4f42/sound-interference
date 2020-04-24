@@ -235,6 +235,10 @@ addEventListener("load", () => {
 
 function gradient(p) {
     let c = 255 * Math.abs(p) / (sound1.ampl + sound2.ampl);
+    
+    c = Math.round(c);
+    c = Math.min(255, c);
+    c = Math.max(0, c);
 
     if (p > 0)
         return `rgb(${c}, 0, 0)`;
