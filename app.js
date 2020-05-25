@@ -246,8 +246,9 @@ function gradient(p) {
         return `rgb(0, 0, ${c})`;
 }
 
-function update() {
-    time = Date.now() / 1000;
+function draw() {
+    let cellWidth = Math.ceil(canvas.width / horizSquares);
+    let cellHeight = Math.ceil(canvas.height / vertSquares);
 
     for (let i = 0; i < horizSquares; i++) {
         for (let j = 0; j < vertSquares; j++) {
@@ -265,9 +266,7 @@ function update() {
 
             ctx.fillStyle = gradient(p);
 
-            ctx.fillRect(x, y,
-                         canvas.width / horizSquares,
-                         canvas.height / vertSquares);
+            ctx.fillRect(Math.floor(x), Math.floor(y), cellWidth, cellHeight);
         }
     }
 
@@ -276,7 +275,6 @@ function update() {
         ctx.drawImage(canvas, 0, 0);
         ctx.filter = "none";
     }
-
 
     ctx.fillStyle = "white";
 
@@ -287,6 +285,12 @@ function update() {
     ctx.beginPath();
     ctx.arc(sound2.x, sound2.y, 10, 0, 2 * Math.PI);
     ctx.fill();
+}
+
+function update() {
+    time = Date.now() / 1000;
+
+    draw();
 
     requestAnimationFrame(update);
 }
